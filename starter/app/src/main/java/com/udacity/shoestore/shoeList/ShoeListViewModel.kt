@@ -10,17 +10,22 @@ class ShoeListViewModel: ViewModel() {
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
 
+    private val _shoeToAdd = MutableLiveData<Shoe>()
+    val shoeToAdd: LiveData<Shoe>
+        get() = _shoeToAdd
+
     init{
         _shoeList.value = mutableListOf()
+        _shoeToAdd.value = Shoe("", 0.0, "", "")
         addDummyData()
     }
 
-     fun addShoe(shoe: Shoe){
-        _shoeList.value?.add(shoe)
+    fun addShoe(){
+        _shoeList.value?.add(shoeToAdd.value!!)
     }
 
     private fun addDummyData(){
-        addShoe(Shoe("Superstar", 6.5, "Adidas", "Popular urban shoes"))
-        addShoe(Shoe("Running", 7.5, "Nike", "Good running shoes"))
+        _shoeList.value?.add(Shoe("Superstar", 6.5, "Adidas", "Popular urban shoes"))
+        _shoeList.value?.add(Shoe("Running", 7.5, "Nike", "Good running shoes"))
     }
 }

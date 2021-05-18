@@ -27,21 +27,11 @@ class AddShoeFragment : Fragment() {
             false)
 
         binding.lifecycleOwner = this
+        binding.shoeListViewModel = viewModel
 
         binding.btnSave.setOnClickListener{view: View ->
-            if(!binding.editName.text.isEmpty() &&
-                !binding.editSize.text.isEmpty() &&
-                !binding.editCompany.text.isEmpty() &&
-                !binding.editDescription.text.isEmpty()){
-                val shoe = Shoe(binding.editName.text.toString(),
-                    binding.editSize.text.toString().toDouble(),
-                    binding.editCompany.text.toString(),
-                    binding.editDescription.text.toString())
-                viewModel.addShoe(shoe)
-                view.findNavController().navigate(R.id.action_addShoeFragment_to_shoeListFragment)
-            }else{
-                Toast.makeText(context, "Complete all the fields", Toast.LENGTH_SHORT).show()
-            }
+            viewModel.addShoe()
+            view.findNavController().navigate(R.id.action_addShoeFragment_to_shoeListFragment)
         }
 
         binding.btnCancel.setOnClickListener{view: View ->
