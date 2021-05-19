@@ -56,6 +56,8 @@
             android:id="@+id/action_addShoeFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/addShoeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
